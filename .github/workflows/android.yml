@@ -23,6 +23,6 @@ jobs:
     - name: Releasing using Hub
       uses: ShaunLWM/action-release-debugapk@master
       env:
-       GITHUB_TOKEN: ${{ secrets.android-debug-apk }}
+       GITHUB_TOKEN: ${{ secrets.ANDROID_DEBUG_APK_TOKEN }}
        APP_FOLDER: app
-       RELEASE_TITLE: New Build
+       RELEASE_TITLE: Login Assignment Debug APK
