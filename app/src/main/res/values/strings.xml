@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">LoginAssignment</string>
+    <string name="app_name">Login assignment</string>
+    <string name="logout_button">LOGOUT</string>
 </resources>
