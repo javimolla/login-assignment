@@ -1,4 +1,4 @@
-package com.karumi.assingnment.login.repository
+package com.karumi.assignment.login.repository
 
 import android.content.Context
 
@@ -8,7 +8,7 @@ import android.content.Context
  */
 class LoginRepository(private val context: Context) {
     companion object {
-        private const val SHARED_PREFS_FILE = "com.karumi.assingnment.login.prefs"
+        private const val SHARED_PREFS_FILE = "com.karumi.assignment.login.prefs"
         private const val TOKEN_PREF_KEY = "token"
     }
 
