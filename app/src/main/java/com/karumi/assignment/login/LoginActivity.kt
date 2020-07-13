@@ -1,9 +1,9 @@
-package com.karumi.assingnment.login
+package com.karumi.assignment.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.karumi.assingnment.login.repository.LoginRepository
-import com.karumi.assingnment.login.service.LoginService
+import com.karumi.assignment.login.repository.LoginRepository
+import com.karumi.assignment.login.service.LoginService
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginPresenter.View {

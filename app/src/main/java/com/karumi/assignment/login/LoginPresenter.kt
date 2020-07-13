@@ -1,6 +1,6 @@
-package com.karumi.assingnment.login
+package com.karumi.assignment.login
 
-import com.karumi.assingnment.login.service.LoginService
+import com.karumi.assignment.login.service.LoginService
 
 class LoginPresenter(private val loginService: LoginService, private val view: View) {
     fun onLoginButtonClick(user: String, password: String) {
