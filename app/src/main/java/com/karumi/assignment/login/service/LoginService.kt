@@ -1,6 +1,6 @@
-package com.karumi.assingnment.login.service
+package com.karumi.assignment.login.service
 
-import com.karumi.assingnment.login.repository.LoginRepository
+import com.karumi.assignment.login.repository.LoginRepository
 
 /**
  * Login API service class that simply persist a token string
