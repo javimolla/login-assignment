@@ -8,7 +8,7 @@ import com.karumi.assignment.login.service.LoginService
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainPresenter.View {
-    private val presenter = MainPresenter(LoginService(LoginRepository(this)), this)
+    private val presenter = MainPresenter(LoginRepository(this), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
