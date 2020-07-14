@@ -1,27 +1,23 @@
 package com.karumi.assignment.login
 
-import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.karumi.assignment.login.repository.LoginRepository
-import com.karumi.assignment.login.service.LoginService
-
+import com.karumi.assignment.login.service.ILoginService
+import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.junit.runner.RunWith
-
-import org.junit.Assert.*
+import javax.inject.Inject
 
 /**
  * Use an instrumented test because LoginRepository depends on app context to store the token.
  * It could have used other approaches, but that's what I decided for persisting a simple value
  */
-@RunWith(AndroidJUnit4::class)
-class LoginServiceUnitTest {
+@HiltAndroidTest
+class LoginServiceUnitTest @Inject constructor(
+    private val loginService: ILoginService
+) {
     @Test
     fun user_logs_in_and_out() {
-        val loginService = LoginService(LoginRepository(InstrumentationRegistry.getInstrumentation().targetContext))
-        loginService.login("whatever", "itdoesnotmatter")
-        assertTrue(loginService.isLoggedIn())
-        loginService.logout()
-        assertFalse(loginService.isLoggedIn())
+        assertNotNull(loginService.login("whatever", "itdoesnotmatter"))
+        assertTrue(loginService.logout())
     }
 }

@@ -1,24 +1,35 @@
-package com.karumi.assignment.login
+package com.karumi.assignment.login.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.karumi.assignment.login.repository.LoginRepository
-import com.karumi.assignment.login.service.LoginService
+import androidx.appcompat.app.AppCompatActivity
+import com.karumi.assignment.login.R
+import com.karumi.assignment.login.presenter.MainPresenter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), MainPresenter.View {
-    private val presenter = MainPresenter(LoginRepository(this), this)
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity(),
+    MainPresenter.View {
+    @Inject
+    lateinit var presenter: MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        presenter.setView(this)
         logoutButton.setOnClickListener { presenter.onLogoutButtonClick() }
     }
 
     override fun onResume() {
         super.onResume()
         presenter.checkIfUserIsLogged()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 
     override fun showLoginForm() {
