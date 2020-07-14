@@ -1,30 +1,30 @@
 package com.karumi.assignment.login
 
-import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.karumi.assignment.login.repository.LoginRepository
-
+import com.karumi.assignment.login.repository.ILoginRepository
+import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Test
-import org.junit.runner.RunWith
-
-import org.junit.Assert.*
+import javax.inject.Inject
 
 /**
  * It's an instrumented test because LoginRepository depends on app context to store the token.
- * It could have used other approaches, but that's what I decided for persisting a simple value
+ * I could have used other approaches, but that's what I decided for persisting a simple value
  */
-@RunWith(AndroidJUnit4::class)
-class LoginRepositoryUnitTest {
+@HiltAndroidTest
+class LoginRepositoryUnitTest : BaseUnitTest() {
     companion object {
         private const val TOKEN = "whatever"
     }
 
+    @Inject
+    lateinit var loginRepository: ILoginRepository
+
     @Test
     fun token_is_persisted_and_removed() {
-        val loginRepository = LoginRepository(InstrumentationRegistry.getInstrumentation().targetContext)
         loginRepository.persistToken(TOKEN)
         assertEquals(loginRepository.retrieveToken(), TOKEN)
         loginRepository.removeToken()
-        assertEquals(loginRepository.retrieveToken(), null)
+        assertNull(loginRepository.retrieveToken())
     }
 }
