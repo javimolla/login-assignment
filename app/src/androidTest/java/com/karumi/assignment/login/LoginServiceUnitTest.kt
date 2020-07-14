@@ -12,9 +12,10 @@ import javax.inject.Inject
  * It could have used other approaches, but that's what I decided for persisting a simple value
  */
 @HiltAndroidTest
-class LoginServiceUnitTest @Inject constructor(
-    private val loginService: ILoginService
-) {
+class LoginServiceUnitTest : BaseUnitTest() {
+    @Inject
+    lateinit var loginService: ILoginService
+
     @Test
     fun user_logs_in_and_out() {
         assertNotNull(loginService.login("whatever", "itdoesnotmatter"))
