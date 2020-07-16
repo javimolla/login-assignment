@@ -12,14 +12,14 @@ android:
     - extra-android-support
     - extra-google-m2repository
     - extra-android-m2repository
-    - sys-img-armeabi-v7a-android-29
+    - system-images;android-29;default;x86
   licenses:
     - '.+'
 
 before_script:
   - chmod +x ./gradlew
   - echo yes | sdkmanager "build-tools;29.0.3"
-  - echo no | android create avd --force -n test -t android-29 --abi armeabi-v7a
+  - echo no | android create avd --force -n test -k "system-images;android-29;default;x86"
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
